@@ -7,8 +7,8 @@ pipeline{
     stages{
         stage("clonning movies repo"){
             steps{
-                sh 'git clone https://github.com/devopsPRO27/movies-api'
                 echo 'cloning . . .'
+                sh 'git clone https://github.com/devopsPRO27/movies-api'
                 // git url:'https://github.com/devopsPRO27/movies-api', branch: 'main'
             }
         }
@@ -28,6 +28,12 @@ pipeline{
             steps{
              echo 'uploading . . .'
             }
+        }
+    }
+    post{
+        always{
+            echo "cleanup"
+            sh 'rm -fr movies-api'
         }
     }
 }
