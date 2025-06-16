@@ -1,7 +1,7 @@
 pipeline{
     agent any 
     environment{
-        IMAGE='Hothaifa'
+        IMAGE='hothaifa'
         // VERSION= env.BUILD_NUMBER already exists
     }
     stages{
