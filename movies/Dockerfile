@@ -2,7 +2,11 @@ FROM python:3.14.0b2-alpine3.22
 
 WORKDIR /app
 
-COPY  ../movies-api/requirments.txt .
+ENV WORKSPACE=$WORKDIR
+
+RUN echo ${WORKSPACE} 
+
+COPY  ${WORKSPACE}/movies-api/requirments.txt .
 
 RUN pip3 install -r requirments.txt
 
