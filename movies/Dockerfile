@@ -6,11 +6,11 @@ ENV WORKSPACE=$WORKDIR
 
 RUN echo ${WORKSPACE} 
 
-COPY  ${WORKSPACE}/movies-api/requirments.txt .
+COPY  /movies-api/requirments.txt .
 
 RUN pip3 install -r requirments.txt
 
-COPY  ../movies-api/movies.py .
+COPY  /movies-api/movies.py .
 
 EXPOSE 80
 
