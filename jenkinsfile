@@ -17,8 +17,6 @@ pipeline{
             steps{
                 echo ' ****** building the app ****** '
                 // var/jenkins_home/workspace/hothiafa's-pipeline/dockertfile
-                sh 'ls -al'
-                sh 'ls movies/ -al'
                 sh "docker build -t $IMAGE:$BUILD_NUMBER movies/"
             }
             post{
@@ -28,10 +26,36 @@ pipeline{
                 }
             }
         }
+        stage("prepare test env"){
+            parallel{
+                stage("install requirements"){
+                    steps{
+                        dir("movies/test"){
+                            sh 'pip3 install -r requirements.txt'
+                        }
+                    }
+                }
+                stage("change shell script permissions"){
+                    steps{
+                        dir("movies/test"){
+                            sh 'chmod 777 test.sh'
+                        }
+                    }
+                }
+                stage("run the application container "){
+                    steps{
+                        sh "docker run -p 80:80 --name $IMAGE -d $IMAGE:$BUILD_NUMBER "
+                    }
+                }
+            }
+        }
         stage("testing movies image"){
             steps{
               echo 'testing . . . '
             }
+        }
+        post{
+            sh "docker rm $IMAGE"
         }
         stage("uploading to dockerhub"){
             steps{
