@@ -53,12 +53,14 @@ pipeline{
             steps{
               echo 'testing . . . '
             }
-        }
-        post{
-            always{
+            post{
+                always{
                 sh "docker rm $IMAGE"
             }
         }
+        }
+        
+        
         stage("uploading to dockerhub"){
             steps{
              echo 'uploading . . .'
