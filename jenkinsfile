@@ -32,6 +32,8 @@ pipeline{
                     steps{
                         sh 'apt update && apt install -y python3-pip'
                         dir("movies/test"){
+                            sh 'python3 -m venv venv'
+                            sh 'source venv/bin/activate'
                             sh 'pip3 install -r requirements.txt'
                         }
                     }
@@ -45,7 +47,7 @@ pipeline{
                 }
                 stage("run the application container "){
                     steps{
-                        sh "docker run -p 80:80 --name $IMAGE -d $IMAGE:$BUILD_NUMBER "
+                        sh "docker run -p 80:80 --name $IMAGE -d $IMAGE:$BUILD_NUMBER &"
                     }
                 }
             }
@@ -56,7 +58,7 @@ pipeline{
             }
             post{
                 always{
-                sh "docker rm $IMAGE"
+                sh "docker rm -f $IMAGE"
             }
         }
         }
