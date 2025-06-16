@@ -30,6 +30,7 @@ pipeline{
             parallel{
                 stage("install requirements"){
                     steps{
+                        sh 'apt update && apt install -y python3-pip'
                         dir("movies/test"){
                             sh 'pip3 install -r requirements.txt'
                         }
