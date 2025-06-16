@@ -1,7 +1,5 @@
 pipeline{
     agent any 
-    environment{
-    }
     stages{
         stage("clonning movies repo"){
             steps{
