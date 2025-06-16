@@ -16,6 +16,8 @@ pipeline{
             steps{
                 echo ' ****** building the app ****** '
                 // var/jenkins_home/workspace/hothiafa's-pipeline/dockertfile
+                sh 'ls -al'
+                sh 'ls -al'
                 sh "docker build -t $IMAGE:$BUILD_NUMBER movies/"
             }
             post{
