@@ -32,7 +32,7 @@ pipeline{
                     steps{
                         sh 'apt update && apt install -y python3-pip'
                         dir("movies/test"){
-                            sh 'python3 -m venv venv'
+                            sh 'apt install -y python3.11-venv'
                             sh 'source venv/bin/activate'
                             sh 'pip3 install -r requirements.txt'
                         }
