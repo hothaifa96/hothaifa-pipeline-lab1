@@ -55,7 +55,9 @@ pipeline{
             }
         }
         post{
-            sh "docker rm $IMAGE"
+            always{
+                sh "docker rm $IMAGE"
+            }
         }
         stage("uploading to dockerhub"){
             steps{
