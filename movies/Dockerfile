@@ -2,11 +2,11 @@ FROM python:3.14.0b2-alpine3.22
 
 WORKDIR /app
 
-COPY  "/var/jenkins_home/workspace/hothiafas-pipeline/requirements.txt" .
+COPY  ./movies-api/requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-COPY "/var/jenkins_home/workspace/hothiafas-pipeline/movies.py" .
+COPY  ./movies-api//movies.py .
 
 EXPOSE 80
 

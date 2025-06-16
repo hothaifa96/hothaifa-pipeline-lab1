@@ -16,7 +16,13 @@ pipeline{
             steps{
                 echo ' ****** building the app ****** '
                 // var/jenkins_home/workspace/hothiafa's-pipeline/dockertfile
-                // sh "docker build -t $IMAGE:$BUILD_NUMBER ."
+                sh "docker build -t $IMAGE:$BUILD_NUMBER ."
+            }
+            post{
+                success{
+                    echo 'printing the images . . . '
+                    sh "docker iamges | grep -i $IAMGE "
+                }
             }
         }
         stage("testing movies image"){
