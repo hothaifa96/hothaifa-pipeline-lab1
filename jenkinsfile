@@ -7,16 +7,16 @@ pipeline{
     stages{
         stage("clonning movies repo"){
             steps{
-                // sh 'git clone https://github.com/devopsPRO27/movies-api'
+                sh 'git clone https://github.com/devopsPRO27/movies-api'
                 echo 'cloning . . .'
-                git url:'https://github.com/devopsPRO27/movies-api', branch: 'main'
+                // git url:'https://github.com/devopsPRO27/movies-api', branch: 'main'
             }
         }
         stage("building movies image"){
             steps{
                 echo ' ****** building the app ****** '
-                echo " $env.WORKSPACE"
-                sh "ls -al $WORKSPACE"
+                // var/jenkins_home/workspace/hothiafa's-pipeline/dockertfile
+                // sh "docker build -t $IMAGE:$BUILD_NUMBER ."
             }
         }
         stage("testing movies image"){
