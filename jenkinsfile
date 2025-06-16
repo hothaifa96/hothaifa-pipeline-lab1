@@ -1,11 +1,32 @@
 pipeline{
     agent any 
+    environment{
+        IMAGE='Hothaifa'
+        // VERSION= env.BUILD_NUMBER already exists
+    }
     stages{
         stage("clonning movies repo"){
             steps{
                 // sh 'git clone https://github.com/devopsPRO27/movies-api'
                 echo 'cloning . . .'
                 git url:'https://github.com/devopsPRO27/movies-api', branch: 'main'
+            }
+        }
+        stage("building movies image"){
+            steps{
+                echo ' ****** building the app ****** '
+                echo " $env.WORKSPACE"
+                sh 'ls -al $env.WORKSPACE÷'
+            }
+        }
+        stage("testing movies image"){
+            steps{
+              echo 'testing . . . '
+            }
+        }
+        stage("uploading to dockerhub"){
+            steps{
+             echo 'uploading . . .'
             }
         }
     }
