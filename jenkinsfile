@@ -9,6 +9,7 @@ pipeline{
             steps{
                 echo 'cloning . . .'
                 sh 'git clone https://github.com/devopsPRO27/movies-api'
+                sh 'mv -fr movies-api/ movies/ '
                 // git url:'https://github.com/devopsPRO27/movies-api', branch: 'main'
             }
         }

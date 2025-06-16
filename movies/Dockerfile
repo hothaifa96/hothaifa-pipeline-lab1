@@ -4,13 +4,11 @@ WORKDIR /app
 
 ENV WORKSPACE=$WORKSPACE
 
-RUN echo ${WORKSPACE} 
-
-COPY  ${WORKSPACE}/movies-api/requirments.txt .
+COPY  requirments.txt .
 
 RUN pip3 install -r requirments.txt
 
-COPY  ${WORKSPACE}/movies-api/movies.py .
+COPY  movies.py .
 
 EXPOSE 80
 
