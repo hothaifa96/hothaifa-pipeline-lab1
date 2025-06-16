@@ -1,9 +1,13 @@
 pipeline{
     agent any 
+    environment{
+    }
     stages{
-        stage("A"){
+        stage("clonning movies repo"){
             steps{
-                echo "========executing A========"
+                // sh 'git clone https://github.com/devopsPRO27/movies-api'
+                echo 'cloning . . .'
+                git url:'https://github.com/devopsPRO27/movies-api', branch: 'main'
             }
         }
     }
