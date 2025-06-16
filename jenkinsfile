@@ -30,10 +30,7 @@ pipeline{
             parallel{
                 stage("install requirements"){
                     steps{
-                        sh 'apt update && apt install -y python3-pip'
                         dir("movies/test"){
-                            sh 'apt install -y python3.11-venv'
-                            sh 'source venv/bin/activate'
                             sh 'pip3 install -r requirements.txt'
                         }
                     }
