@@ -16,7 +16,7 @@ pipeline{
             steps{
                 echo ' ****** building the app ****** '
                 echo " $env.WORKSPACE"
-                sh "ls -al $env.WORKSPACE"
+                sh "ls -al $WORKSPACE"
             }
         }
         stage("testing movies image"){
